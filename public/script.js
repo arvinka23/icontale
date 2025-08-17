@@ -98,6 +98,32 @@ function smoothScrollTo(element) {
     }
 }
 
+// Show error messages in a beautiful way
+function showError(message) {
+    const errorDiv = document.getElementById('error-message');
+    if (errorDiv) {
+        errorDiv.textContent = message;
+        errorDiv.style.display = 'block';
+        
+        // Add animation
+        errorDiv.style.animation = 'slideInDown 0.3s ease';
+        
+        // Auto-hide after 5 seconds
+        setTimeout(() => {
+            errorDiv.style.display = 'none';
+        }, 5000);
+        
+        // Play error sound
+        playSound(400, 300, 'sawtooth');
+        
+        // Add shake animation to container
+        addShakeAnimation(document.querySelector('.container'));
+    } else {
+        // Fallback to alert if error div doesn't exist
+        alert(message);
+    }
+}
+
 // Add loading animation
 function showLoading() {
     const overlay = document.getElementById('loading-overlay');
@@ -353,7 +379,7 @@ menuActionBtn.onclick = () => {
     const isCreate = tabCreate.classList.contains('active');
     const userEmoji = localStorage.getItem('icontale_user_emoji') || '😀';
     if (!username) {
-        alert('Пожалуйста, введите никнейм');
+        showError('Bitte gib einen Benutzernamen ein');
         return;
     }
     if (isCreate) {
@@ -361,7 +387,7 @@ menuActionBtn.onclick = () => {
     } else {
         const roomCode = roomCodeInput.value.trim().toUpperCase();
         if (roomCode.length !== 6) {
-            alert('Введите корректный код лобби (6 символов)');
+            showError('Bitte gib einen gültigen Lobby-Code ein (6 Zeichen)');
             return;
         }
         socket.emit('join-lobby', { username, roomCode, emoji: userEmoji });
@@ -401,7 +427,7 @@ socket.on('lobby-error', ({ message }) => {
 });
 
 socket.on('lobby-closed', () => {
-    alert('Lobby closed.');
+    showError('Lobby wurde geschlossen.');
     window.location.reload();
 });
 
@@ -558,7 +584,7 @@ function submitStory() {
         timerSpan.textContent = 'Submitted!';
         if (storyTimer) clearInterval(storyTimer);
     } else {
-        alert('Your story must be no more than 500 words.');
+        showError('Deine Geschichte darf maximal 500 Wörter haben.');
     }
 }
 
@@ -714,12 +740,12 @@ function setTab(tab) {
         tabCreate.classList.add('active');
         tabJoin.classList.remove('active');
         if (roomCodeGroup) roomCodeGroup.style.display = 'none';
-        menuActionBtn.innerHTML = '<span class="btn-icon">🚀</span>Create lobby';
+        menuActionBtn.innerHTML = '<span class="btn-icon">🚀</span>Lobby erstellen';
     } else {
         tabCreate.classList.remove('active');
         tabJoin.classList.add('active');
         if (roomCodeGroup) roomCodeGroup.style.display = 'block';
-        menuActionBtn.innerHTML = '<span class="btn-icon">🎯</span>Join lobby';
+        menuActionBtn.innerHTML = '<span class="btn-icon">🎯</span>Lobby beitreten';
     }
 }
 tabCreate.onclick = () => setTab('create');

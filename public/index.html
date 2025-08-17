@@ -56,13 +56,13 @@
             <!-- Main Menu Section -->
             <section id="main-menu" class="menu-section">
                 <div class="tabs">
-                    <button id="tab-create" class="tab active" aria-label="Create a new lobby">
+                    <button id="tab-create" class="tab active" aria-label="Erstelle ein neues Lobby">
                         <span class="tab-icon">✨</span>
-                        Create Lobby
+                        Lobby erstellen
                     </button>
-                    <button id="tab-join" class="tab" aria-label="Join an existing lobby">
+                    <button id="tab-join" class="tab" aria-label="Tritt einem bestehenden Lobby bei">
                         <span class="tab-icon">🎯</span>
-                        Join Lobby
+                        Lobby beitreten
                     </button>
                 </div>
                 
@@ -75,16 +75,16 @@
                 
                 <div class="menu-fields">
                     <div class="input-group">
-                        <label for="username" class="input-label">Your Name</label>
-                        <input type="text" id="username" placeholder="Enter your nickname" maxlength="20">
+                        <label for="username" class="input-label">Dein Name</label>
+                        <input type="text" id="username" placeholder="Gib deinen Spitznamen ein" maxlength="20">
                     </div>
                     <div class="input-group" id="room-code-group" style="display:none;">
-                        <label for="room-code-input" class="input-label">Lobby Code</label>
-                        <input type="text" id="room-code-input" placeholder="Enter 6-digit code" maxlength="6" pattern="[A-Za-z0-9]{6}">
+                        <label for="room-code-input" class="input-label">Lobby-Code</label>
+                        <input type="text" id="room-code-input" placeholder="Gib 6-stelligen Code ein" maxlength="6" pattern="[A-Za-z0-9]{6}">
                     </div>
                     <button id="menu-action-btn" class="primary-btn">
                         <span class="btn-icon">🚀</span>
-                        Create lobby
+                        Lobby erstellen
                     </button>
                 </div>
             </section>
@@ -93,7 +93,7 @@
             <section id="lobby" class="lobby-section" style="display:none;">
                 <div class="lobby-header">
                     <h2 class="lobby-title">🎪 Lobby <span id="room-code" class="room-code"></span></h2>
-                    <p class="lobby-subtitle">Waiting for players to join...</p>
+                    <p class="lobby-subtitle">Warte auf Spieler...</p>
                 </div>
                 
                 <div class="lobby-players-grid" id="players-grid" role="grid" aria-label="Players in lobby"></div>
@@ -101,39 +101,39 @@
                 <div class="lobby-actions">
                     <button id="start-game" class="start-btn" disabled>
                         <span class="btn-icon">🎬</span>
-                        Start Game
+                        Spiel starten
                     </button>
-                    <p class="start-hint">Need at least 2 players to start</p>
+                    <p class="start-hint">Mindestens 2 Spieler nötig</p>
                 </div>
             </section>
 
             <!-- Story Writing Section -->
             <section id="story-section" class="story-section" style="display:none;">
                 <div class="story-header">
-                    <h2>📝 Write Your Story</h2>
+                    <h2>📝 Schreibe deine Geschichte</h2>
                     <div class="story-info">
                         <div class="info-item">
-                            <span class="info-label">Your emojis:</span>
+                            <span class="info-label">Deine Emojis:</span>
                             <span id="emojis" class="info-value"></span>
                         </div>
                         <div class="info-item">
-                            <span class="info-label">Time left:</span>
+                            <span class="info-label">Verbleibende Zeit:</span>
                             <span id="timer" class="info-value timer-value">2:00</span>
                         </div>
                     </div>
                 </div>
                 
                 <div class="story-writing-area">
-                    <textarea id="story" rows="8" cols="60" placeholder="Write your creative story here (50-500 words)..." maxlength="4000" aria-label="Story text area"></textarea>
+                    <textarea id="story" rows="8" cols="60" placeholder="Schreibe hier deine kreative Geschichte (50-500 Wörter)..." maxlength="4000" aria-label="Story text area"></textarea>
                     <div class="story-stats">
-                        <span class="word-count">Word count: <span id="word-count">0</span></span>
+                        <span class="word-count">Wörter: <span id="word-count">0</span></span>
                     </div>
                 </div>
                 
-                <button id="submit-story" class="primary-btn">
-                    <span class="btn-icon">📤</span>
-                    Submit Story
-                </button>
+                                    <button id="submit-story" class="primary-btn">
+                        <span class="btn-icon">📤</span>
+                        Geschichte einreichen
+                    </button>
             </section>
 
             <!-- Text Writing Phase -->
